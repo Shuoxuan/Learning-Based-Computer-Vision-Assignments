@@ -206,7 +206,7 @@ class RandomSizedCrop(object):
       # with a square sized output, the default is to crop the patch in the center
       # (after all trials fail)
       h, w = img.shape[0], img.shape[1]
-      th, tw = self.size
+      th, tw = self.size, self.size
       x1 = int(round((w - tw) / 2.))
       y1 = int(round((h - th) / 2.))
       img = img[y1 : y1 + th, x1 : x1 + tw]
