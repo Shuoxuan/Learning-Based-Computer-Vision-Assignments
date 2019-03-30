@@ -238,7 +238,7 @@ class CustomNet(nn.Module):
     # global avg pooling + FC
     self.avgpool =  nn.AdaptiveAvgPool2d((1, 1))
     self.fc = nn.Linear(64, num_classes)
-    self.relu = nn.ReLU(inplace=True)
+    self.relu = nn.ReLU(inplace=False)
 
 
   def forward(self, x):
