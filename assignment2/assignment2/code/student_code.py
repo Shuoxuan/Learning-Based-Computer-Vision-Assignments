@@ -231,19 +231,19 @@ class SimpleNet(nn.Module):
 
 class CustomNet(nn.Module):
   # a simple CNN for image classifcation
-  def __init__(self, ni, conv_op=nn.Conv2d, num_classes=100):
+  def __init__(self, conv_op=nn.Conv2d, num_classes=100):
     super(CustomNet, self).__init__()
-    self.conv1 = nn.Conv2d(ni, ni, 1)
-    self.conv2 = nn.Conv2d(ni, ni, 3, 1, 1)
+    self.conv1 = nn.Conv2d(3, 64, 1)
+    self.conv2 = nn.Conv2d(64, 64, 3, 1, 1)
     # global avg pooling + FC
     self.avgpool =  nn.AdaptiveAvgPool2d((1, 1))
-    self.fc = nn.Linear(ni, num_classes)
+    self.fc = nn.Linear(64, num_classes)
     self.relu = nn.ReLU(inplace=True)
 
 
   def forward(self, x):
-    residual = x
     x = self.relu(self.conv1(x))
+    residual = x
     x = self.relu(self.conv2(x))
     x += residual
 
