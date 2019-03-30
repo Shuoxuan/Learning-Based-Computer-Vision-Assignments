@@ -248,7 +248,14 @@ class CustomNet(nn.Module):
     x += residual
 
     residual = x
-    x = self.relu(self.conv1(x))
+    x = self.relu(self.conv2(x))
+    x += residual
+
+    residual = x
+    x = self.relu(self.conv2(x))
+    x += residual
+
+    residual = x
     x = self.relu(self.conv2(x))
     x += residual
 
