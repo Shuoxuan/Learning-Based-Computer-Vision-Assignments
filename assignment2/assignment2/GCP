@@ -1,0 +1,33 @@
+https://cloud.google.com/deep-learning-vm/
+
+SSH key:
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWdycBQoQOfWCID3PWaUdX82VOhIUf0DFJAhp1edfARWc5jXuvoKOYIQqkpKRVEhKL+/S7DpjFOacDY9oRq7AXtnoAWc40EUjefEbvLDUSa+IPRnSXyRU+dFr4Obq6f0SRsI0TZPw/v6lM0QU2AJ+ZzjbacDE/ATqsQ0juOCxnRqZVPAGOAUxyg3TYKNjqrteLFhsqYdhOZcDU2f6uYKve8R1diWx864EqzJi7iq+/ddiysNFuBplLigDZakkH1qdT52zVtoT7q2ByBHdran1wuW6uymXBwWBIfC4wjG8HwWlkOV0dL6cOLF4kNVT48bCWyI9/pSAOW/zkN7vmx0en shuoxuan@shuoxuan-XPS-15-9550
+
+Create the SSH key pairs:
+
+ssh-keygen -t rsa
+
+Copy your public key to Google Cloud:
+“Compute Engine” -> “VM Instances” -> Your instance -> edit -> SSH
+keys -> Add item -> Save
+
+cd .ssh
+
+ssh -i id_rsa shuoxuan@35.222.47.237
+
+cd git
+
+scp -r ./ shuoxuan@35.202.217.240:/shuoxuan/
+
+scp -r shuoxuan@35.202.217.240:/Learning-based-computer-vision ~/git/logs
+
+python ./main.py ../data
+
+sudo conda install -c conda-forge tensorboardx
+sudo conda install -c conda-forge tensorflow 
+
+tensorboard --logdir=../logs
+
+git add .
+git commit -m "add training result custom net"
